@@ -1,0 +1,5 @@
+{
+  package aparser
+}
+
+RuleA = 'a'+

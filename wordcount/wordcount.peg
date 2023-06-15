@@ -1,0 +1,12 @@
+{
+  package wordcount
+}
+
+wordCount = w:(word delim?)* EOF {
+  words := toAnySlice(w)
+  return len(words), nil
+}
+word      = letter+
+delim     = ' '
+letter    = [a-zA-Z]
+EOF = !.
