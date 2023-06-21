@@ -9,16 +9,11 @@ import (
 )
 
 func TestWordcountExtended(t *testing.T) {
-	t.Skip("skipped")
-
 	tt := []struct {
 		name  string
 		words int
+		skip  bool
 	}{
-		{
-			name:  "Welcome Bärner Go audience",
-			words: 4,
-		},
 		{
 			name: `Lorem ipsum dolor sit
 amet consetetur sadipscing elitr
@@ -27,15 +22,26 @@ tempor invidunt ut labore
 et dolore magna aliquyam
 erat sed diam voluptua`,
 			words: 24,
+			skip:  true,
 		},
 		{
 			name:  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
 			words: 24,
+			skip:  true,
+		},
+		{
+			name:  "Welcome Bärner Go audience",
+			words: 4,
+			skip:  true,
 		},
 	}
 
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
+			if tc.skip {
+				t.Skip("skipped")
+			}
+
 			is := is.New(t)
 
 			res, err := wordcount.Parse("", []byte(tc.name))
