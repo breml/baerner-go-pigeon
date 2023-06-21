@@ -12,6 +12,10 @@ tasks:
     cmds:
       - pigeon a/a.peg > a/a_parser.go
       - go test -v ./a
+  jsonnumber:
+    cmds:
+      - pigeon jsonnumber/jsonnumber.peg > jsonnumber/jsonnumber_parser.go
+      - go test -v ./jsonnumber
   wordlist:
     cmds:
       - pigeon wordlist/wordlist.peg > wordlist/wordlist_parser.go

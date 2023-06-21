@@ -1,0 +1,11 @@
+{
+  package jsonnumber
+}
+
+Number = '-'? Integer Fraction? Exponent?
+Integer = '0' / NonZeroDecimalDigit DecimalDigit*
+Fraction = '.' DecimalDigit+
+Exponent = 'e'i [+-]? DecimalDigit+
+
+NonZeroDecimalDigit = [1-9]
+DecimalDigit = [0-9]
