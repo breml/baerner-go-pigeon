@@ -48,12 +48,11 @@ g,h,i`,
 			ret, err := Parse("", []byte(tc.input))
 			is.True((err != nil) == tc.wantErr)
 
-			lines := toAnySlice(ret)
-			for l, line := range lines {
-				vals := toAnySlice(line)
-				for v, val := range vals {
-					s := val.(string)
-					t.Log(l, v, s)
+			csv := ret.(CSV)
+
+			for l, line := range csv {
+				for f, field := range line {
+					t.Log(l, f, field)
 				}
 			}
 		})

@@ -34,7 +34,6 @@ g,h,i`,
 			is := is.New(t)
 
 			ret, err := Parse("", []byte(tc.input))
-			t.Log(err)
 			is.True((err != nil) == tc.wantErr)
 
 			lines := toAnySlice(ret)

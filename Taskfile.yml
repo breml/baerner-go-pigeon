@@ -23,3 +23,7 @@ tasks:
     cmds:
       - pigeon csv2/csv.peg > csv2/csv_parser.go
       - go test -v ./csv2
+  csv3:
+    cmds:
+      - pigeon csv3/csv.peg > csv3/csv_parser.go
+      - go test -v ./csv3
