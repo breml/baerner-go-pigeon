@@ -1,0 +1,12 @@
+{
+  package csv
+}
+
+doc = lines:(line*) !. { return lines, nil }
+line = values:(delimedvalue)* lastvalue:value nl { return line(values, lastvalue) }
+delimedvalue = value:value delim { return value, nil }
+value = value:lettersequence { return value, nil }
+lettersequence = letters:letter+ { return string(c.text), nil }
+letter = !(delim) !nl . { return string(c.text), nil }
+delim = ","
+nl = "\n" / !.

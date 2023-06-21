@@ -1,0 +1,15 @@
+{
+  package csv
+}
+
+doc = lines:(line*) !. { return lines, nil }
+line = values:(delimedvalue)* lastvalue:value nl { return line(values, lastvalue) }
+delimedvalue = value:value delim { return value, nil }
+value = value:(doublequotedvalue / lettersequence) { return value, nil }
+lettersequence = letters:letter+ { return string(c.text), nil }
+doublequotedvalue = [\\"] chars:( escapeddoublequote / notdoublequote )* [\\"] { return doublequotedvalue(chars) }
+notdoublequote = char:[^\\"] { return string(c.text), nil }
+escapeddoublequote = [\\][\\"] { return `"`, nil }
+letter = !(delim) !nl . { return string(c.text), nil }
+delim = ","
+nl = "\n" / !.

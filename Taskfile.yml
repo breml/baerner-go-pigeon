@@ -15,3 +15,11 @@ tasks:
     cmds:
       - pigeon wordcount/wordcount.peg > wordcount/wordcount_parser.go
       - go test -v ./wordcount
+  csv1:
+    cmds:
+      - pigeon csv1/csv.peg > csv1/csv_parser.go
+      - go test -v ./csv1
+  csv2:
+    cmds:
+      - pigeon csv2/csv.peg > csv2/csv_parser.go
+      - go test -v ./csv2
