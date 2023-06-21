@@ -3,11 +3,6 @@
 version: '3'
 
 tasks:
-  # a_old:
-  #   silent: true
-  #   cmds:
-  #     - pigeon a/a.peg > a/a.go
-  #     - go run ./a aaa
   a:
     cmds:
       - pigeon a/a.peg > a/a_parser.go
@@ -16,10 +11,6 @@ tasks:
     cmds:
       - pigeon jsonnumber/jsonnumber.peg > jsonnumber/jsonnumber_parser.go
       - go test -v ./jsonnumber
-  wordlist:
-    cmds:
-      - pigeon wordlist/wordlist.peg > wordlist/wordlist_parser.go
-      - go test -v ./wordlist
   wordcount:
     cmds:
       - pigeon wordcount/wordcount.peg > wordcount/wordcount_parser.go
